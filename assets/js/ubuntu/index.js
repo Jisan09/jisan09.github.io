@@ -1,7 +1,5 @@
 (function () {
   const platformButtons = document.querySelectorAll('[data-platform]');
-  const platformOutput = document.querySelector('[data-platform-output]');
-  const platformLabel = document.querySelector('.platform-sim__label');
   const ubuntuSection = document.getElementById('ubuntu-sim');
   const ubuntuClose = document.querySelector('[data-ubuntu-close]');
 
@@ -98,37 +96,7 @@
   let terminalSessionActive = false;
   const calendarView = { year: 0, month: 0 };
 
-  const platformSimulations = {
-    linux: [
-      '$ lsb_release -a',
-      'Distributor ID: Ubuntu',
-      'Description: Ubuntu 22.04.3 LTS',
-      'Release: 22.04',
-      'Codename: jammy',
-      '',
-      '$ uname -a',
-      'Linux jisan-dev 5.15.0-101-generic x86_64 GNU/Linux',
-    ].join('\n'),
-    mac: [
-      '$ sw_vers',
-      'ProductName: macOS',
-      'ProductVersion: 14.4',
-      'BuildVersion: 23E214',
-      '',
-      '$ uname -m',
-      'arm64',
-    ].join('\n'),
-    windows: [
-      '> ver',
-      'Microsoft Windows [Version 11.0.22631.3155]',
-      '',
-      '> systeminfo | findstr /B /C:"OS Name" /C:"OS Version"',
-      'OS Name: Microsoft Windows 11 Pro',
-      'OS Version: 10.0.22631 N/A Build 22631',
-    ].join('\n'),
-  };
-
-  if (!platformButtons.length || !platformOutput || !platformLabel) return;
+  if (!platformButtons.length) return;
 
   function setTerminalRunning(running) {
     if (!ubuntuTerminalButton) return;
@@ -348,12 +316,8 @@
       button.classList.add('is-active');
 
       const key = button.dataset.platform;
-      const title = button.textContent.trim();
-      platformLabel.textContent = title + ' simulation';
-      platformOutput.textContent = platformSimulations[key] || '$';
 
       if (key === 'linux') {
-        platformOutput.textContent = '$ launching ubuntu-desktop...';
         showUbuntu();
       }
     });
