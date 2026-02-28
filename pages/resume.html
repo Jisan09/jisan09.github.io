@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../assets/css/ubuntu/index.css" />
   <link rel="stylesheet" href="../assets/css/ubuntu/chrome.css" />
   <link rel="stylesheet" href="../assets/css/ubuntu/files.css" />
+  <link rel="stylesheet" href="../assets/css/ubuntu/trash.css" />
   <link rel="stylesheet" href="../assets/css/ubuntu/pdf-viewer.css" />
   <link rel="stylesheet" href="../assets/css/ubuntu/settings.css" />
   <link rel="stylesheet" href="../assets/css/ubuntu/terminal.css" />
@@ -240,10 +241,18 @@
                   <img class="ubuntu-icon__img" src="../assets/files/ubuntu/icons/settings.png" alt="" aria-hidden="true" />
                   <span class="sr-only">Settings</span>
                 </button>
+                <button class="ubuntu-icon" type="button" title="Trash" data-app="trash" data-label="Trash" data-ubuntu-trash>
+                  <img class="ubuntu-icon__img" src="../assets/files/ubuntu/icons/trash.png" alt="" aria-hidden="true" />
+                  <span class="sr-only">Trash</span>
+                </button>
               </nav>
             </aside>
             <main class="l-main ubuntu-app__main">
               <div class="ubuntu-wall">
+                <button class="ubuntu-shortcut" type="button" data-ubuntu-audio-fah>
+                  <img class="ubuntu-shortcut__icon" src="../assets/files/ubuntu/filemanager/application-x-firmware.png" alt="" aria-hidden="true" />
+                  <span class="ubuntu-shortcut__label">don't click</span>
+                </button>
                 <div class="ubuntu-window ubuntu-window--files is-hidden" data-files-window>
                   <div class="ubuntu-window__bar" data-files-drag-handle>
                     <div class="ubuntu-window__title">Files</div>
@@ -291,6 +300,50 @@
                   <div class="ubuntu-window__body ubuntu-window__body--pdf">
                     <div class="ubuntu-pdf">
                       <iframe class="ubuntu-pdf__frame" data-pdf-frame title="Document Viewer"></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="ubuntu-window ubuntu-window--trash is-hidden" data-trash-window>
+                  <div class="ubuntu-window__bar" data-trash-drag-handle>
+                    <div class="ubuntu-window__title">Trash</div>
+                    <div class="ubuntu-window__controls">
+                      <button class="ubuntu-control ubuntu-control--min" type="button" aria-label="Minimize" data-trash-minimize>&mdash;</button>
+                      <button class="ubuntu-control ubuntu-control--max" type="button" aria-label="Maximize" data-trash-maximize>▢</button>
+                      <button class="ubuntu-control ubuntu-control--close" type="button" aria-label="Close" data-trash-close>&times;</button>
+                    </div>
+                  </div>
+                  <div class="ubuntu-window__body ubuntu-window__body--trash">
+                    <div class="ubuntu-trash">
+                      <div class="ubuntu-trash__grid">
+                        <button class="ubuntu-trash__item" type="button">
+                          <img class="ubuntu-trash__icon" src="../assets/files/ubuntu/filemanager/folder.png" alt="" aria-hidden="true" />
+                          <span>old_project</span>
+                        </button>
+                        <button class="ubuntu-trash__item" type="button">
+                          <img class="ubuntu-trash__icon" src="../assets/files/ubuntu/filemanager/folder.png" alt="" aria-hidden="true" />
+                          <span>backup_2024</span>
+                        </button>
+                        <button class="ubuntu-trash__item" type="button">
+                          <img class="ubuntu-trash__icon" src="../assets/files/ubuntu/filemanager/folder-download.png" alt="" aria-hidden="true" />
+                          <span>downloads_dump</span>
+                        </button>
+                        <button class="ubuntu-trash__item" type="button">
+                          <img class="ubuntu-trash__icon" src="../assets/files/ubuntu/filemanager/folder-documents.png" alt="" aria-hidden="true" />
+                          <span>notes_archive</span>
+                        </button>
+                        <button class="ubuntu-trash__item" type="button" data-trash-audio="want_to_hire">
+                          <span class="ubuntu-trash__file" aria-hidden="true"></span>
+                          <span>want to hire?</span>
+                        </button>
+                        <button class="ubuntu-trash__item" type="button" data-trash-audio="dont_want_to_hire">
+                          <span class="ubuntu-trash__file" aria-hidden="true"></span>
+                          <span>don't want to hire?</span>
+                        </button>
+                        <button class="ubuntu-trash__item" type="button" data-trash-open-resume>
+                          <img class="ubuntu-trash__icon ubuntu-trash__icon--file" src="../assets/files/ubuntu/filemanager/application-pdf.png" alt="" aria-hidden="true" />
+                          <span>resume_v1_final</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -380,6 +433,7 @@
   <script src="../assets/js/ubuntu/terminal.js"></script>
   <script src="../assets/js/ubuntu/chrome.js"></script>
   <script src="../assets/js/ubuntu/pdf-viewer.js"></script>
+  <script src="../assets/js/ubuntu/trash.js"></script>
   <script src="../assets/js/ubuntu/files.js"></script>
   <script src="../assets/js/ubuntu/settings.js"></script>
   <script src="../assets/js/ubuntu/index.js"></script>

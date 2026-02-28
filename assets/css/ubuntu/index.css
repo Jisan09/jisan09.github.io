@@ -246,6 +246,39 @@ body.ubuntu-open {
   overflow: hidden;
 }
 
+.ubuntu-shortcut {
+  position: absolute;
+  top: 22px;
+  left: 14px;
+  width: 82px;
+  padding: 6px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #f5f4f7;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.ubuntu-shortcut:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.ubuntu-shortcut__icon {
+  width: 50px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.ubuntu-shortcut__label {
+  font-size: 0.72rem;
+  text-align: center;
+  line-height: 1.15;
+}
+
 .ubuntu-dock {
   display: grid;
   gap: 8px;

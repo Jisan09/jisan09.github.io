@@ -44,6 +44,7 @@
           type: 'file',
           name: 'Md Jisan - Resume.pdf',
           href: '../assets/files/Md%20Jisan%20-%20Resume.pdf',
+          icon: '../assets/files/ubuntu/filemanager/application-pdf.png',
         },
       ],
       Downloads: [],
@@ -112,6 +113,12 @@
           icon = document.createElement('img');
           icon.className = 'ubuntu-files__folder-img';
           icon.src = getFolderIcon(item.name);
+          icon.alt = '';
+          icon.setAttribute('aria-hidden', 'true');
+        } else if (item.type === 'file' && item.icon) {
+          icon = document.createElement('img');
+          icon.className = 'ubuntu-files__file-img';
+          icon.src = item.icon;
           icon.alt = '';
           icon.setAttribute('aria-hidden', 'true');
         } else {

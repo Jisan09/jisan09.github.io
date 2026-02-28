@@ -1,0 +1,96 @@
+.ubuntu-window--trash {
+  top: 102px;
+  left: 53%;
+  width: min(760px, 88%);
+}
+
+.ubuntu-window__body--trash {
+  padding: 0;
+  display: flex;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+  font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+}
+
+.ubuntu-trash {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: rgba(16, 17, 21, 0.42);
+  color: #d9dde6;
+}
+
+.ubuntu-trash__grid {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px 12px;
+}
+
+.ubuntu-trash__item {
+  width: 100%;
+  min-height: 92px;
+  border-radius: 8px;
+  color: #d3d8e4;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  cursor: default;
+  text-align: center;
+}
+
+.ubuntu-trash__item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ubuntu-trash__item.is-selected {
+  background: rgba(121, 167, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(142, 181, 255, 0.55) inset;
+}
+
+.ubuntu-trash__icon {
+  width: 56px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.ubuntu-trash__icon--file {
+  width: 42px;
+  height: 42px;
+}
+
+.ubuntu-trash__file {
+  width: 34px;
+  height: 42px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #efefef, #cfd2d9);
+  position: relative;
+}
+
+.ubuntu-trash__file::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-left: 10px solid transparent;
+  border-top: 10px solid rgba(120, 126, 137, 0.45);
+}
+
+.ubuntu-trash__item span {
+  font-size: 0.84rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 900px) {
+  .ubuntu-window--trash {
+    width: min(760px, 96%);
+  }
+
+  .ubuntu-trash__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

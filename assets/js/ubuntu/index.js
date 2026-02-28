@@ -2,6 +2,7 @@
   const platformButtons = document.querySelectorAll('[data-platform]');
   const ubuntuSection = document.getElementById('ubuntu-sim');
   const ubuntuClose = document.querySelector('[data-ubuntu-close]');
+  const ubuntuFahShortcut = document.querySelector('[data-ubuntu-audio-fah]');
 
   const ubuntuTerminalButton = document.querySelector('[data-ubuntu-terminal]');
   const ubuntuWindow = document.querySelector('[data-ubuntu-window]');
@@ -91,9 +92,26 @@
       })
     : { resetSession: function () {} };
 
+  const trashApp = typeof window.createUbuntuTrash === 'function'
+    ? window.createUbuntuTrash({
+        dockButton: document.querySelector('[data-ubuntu-trash]'),
+        windowEl: document.querySelector('[data-trash-window]'),
+        closeButton: document.querySelector('[data-trash-close]'),
+        minButton: document.querySelector('[data-trash-minimize]'),
+        maxButton: document.querySelector('[data-trash-maximize]'),
+        dragHandle: document.querySelector('[data-trash-drag-handle]'),
+        onOpenFile: function (file) {
+          pdfViewerApp.openDocument(file);
+        },
+      })
+    : { resetSession: function () {} };
+
   let ubuntuTimer = null;
   let dragState = null;
   let terminalSessionActive = false;
+  let fahAudio = null;
+  let fahShortcutDrag = null;
+  let fahShortcutMoved = false;
   const calendarView = { year: 0, month: 0 };
 
   if (!platformButtons.length) return;
@@ -109,6 +127,12 @@
     windowEl.style.top = '';
     windowEl.style.width = '';
     windowEl.style.removeProperty('--ubuntu-x');
+  }
+
+  function resetFahShortcutPosition() {
+    if (!ubuntuFahShortcut) return;
+    ubuntuFahShortcut.style.left = '2px';
+    ubuntuFahShortcut.style.top = '20px';
   }
 
   const terminal = typeof window.createUbuntuTerminal === 'function'
@@ -274,6 +298,12 @@
     pdfViewerApp.resetSession();
     chromeApp.resetSession();
     settingsApp.resetSession();
+    trashApp.resetSession();
+    if (fahAudio) {
+      fahAudio.pause();
+      fahAudio.currentTime = 0;
+    }
+    resetFahShortcutPosition();
     closePowerMenu();
 
     if (ubuntuBoot && ubuntuDesktop) {
@@ -304,6 +334,11 @@
     pdfViewerApp.resetSession();
     chromeApp.resetSession();
     settingsApp.resetSession();
+    trashApp.resetSession();
+    if (fahAudio) {
+      fahAudio.pause();
+      fahAudio.currentTime = 0;
+    }
     closePowerMenu();
     if (ubuntuTimer) window.clearTimeout(ubuntuTimer);
   }
@@ -327,6 +362,80 @@
     ubuntuClose.addEventListener('click', function (event) {
       event.preventDefault();
       hideUbuntu();
+    });
+  }
+
+  if (ubuntuFahShortcut) {
+    ubuntuFahShortcut.addEventListener('click', function () {
+      if (fahShortcutMoved) {
+        fahShortcutMoved = false;
+        return;
+      }
+      if (fahAudio) {
+        fahAudio.pause();
+        fahAudio.currentTime = 0;
+      }
+      fahAudio = new Audio('../assets/files/ubuntu/audio/fahh.mp3');
+      const playPromise = fahAudio.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {});
+      }
+    });
+
+    ubuntuFahShortcut.addEventListener('pointerdown', function (event) {
+      if (event.button !== 0) return;
+      const rect = ubuntuFahShortcut.getBoundingClientRect();
+      const offsetParent = ubuntuFahShortcut.offsetParent;
+      const parentRect = offsetParent instanceof Element
+        ? offsetParent.getBoundingClientRect()
+        : { left: 0, top: 0 };
+
+      ubuntuFahShortcut.style.left = (rect.left - parentRect.left) + 'px';
+      ubuntuFahShortcut.style.top = (rect.top - parentRect.top) + 'px';
+
+      fahShortcutDrag = {
+        offsetX: event.clientX - rect.left,
+        offsetY: event.clientY - rect.top,
+      };
+      fahShortcutMoved = false;
+      ubuntuFahShortcut.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+
+    ubuntuFahShortcut.addEventListener('pointermove', function (event) {
+      if (!fahShortcutDrag) return;
+      const offsetParent = ubuntuFahShortcut.offsetParent;
+      const parentRect = offsetParent instanceof Element
+        ? offsetParent.getBoundingClientRect()
+        : { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight };
+      const rect = ubuntuFahShortcut.getBoundingClientRect();
+      const maxLeft = Math.max(0, parentRect.width - rect.width);
+      const maxTop = Math.max(0, parentRect.height - rect.height);
+
+      const nextLeft = Math.min(
+        Math.max(0, event.clientX - parentRect.left - fahShortcutDrag.offsetX),
+        maxLeft
+      );
+      const nextTop = Math.min(
+        Math.max(0, event.clientY - parentRect.top - fahShortcutDrag.offsetY),
+        maxTop
+      );
+
+      ubuntuFahShortcut.style.left = nextLeft + 'px';
+      ubuntuFahShortcut.style.top = nextTop + 'px';
+      fahShortcutMoved = true;
+    });
+
+    ubuntuFahShortcut.addEventListener('pointerup', function (event) {
+      if (!fahShortcutDrag) return;
+      fahShortcutDrag = null;
+      ubuntuFahShortcut.releasePointerCapture(event.pointerId);
+    });
+
+    ubuntuFahShortcut.addEventListener('pointercancel', function (event) {
+      if (!fahShortcutDrag) return;
+      fahShortcutDrag = null;
+      ubuntuFahShortcut.releasePointerCapture(event.pointerId);
     });
   }
 
