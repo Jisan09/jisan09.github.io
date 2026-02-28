@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume — Jisan</title>
   <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/ubuntu/boot.css" />
+  <link rel="stylesheet" href="../assets/css/ubuntu/index.css" />
+  <link rel="stylesheet" href="../assets/css/ubuntu/chrome.css" />
+  <link rel="stylesheet" href="../assets/css/ubuntu/files.css" />
+  <link rel="stylesheet" href="../assets/css/ubuntu/pdf-viewer.css" />
+  <link rel="stylesheet" href="../assets/css/ubuntu/settings.css" />
+  <link rel="stylesheet" href="../assets/css/ubuntu/terminal.css" />
 </head>
 <body>
   <header>
@@ -41,7 +48,7 @@
             <h3>Resume PDF</h3>
             <p class="lead">Download the full resume for a complete overview of experience and projects.</p>
           </div>
-          <a class="button" href="../assets/Md%20Jisan%20-%20Resume.pdf" download>Download Resume</a>
+          <a class="button" href="../assets/files/Md%20Jisan%20-%20Resume.pdf" download>Download Resume</a>
         </div>
       </div>
     </section>
@@ -143,10 +150,14 @@
           </div>
           <div class="card reveal">
             <h3>Platforms</h3>
-            <div class="list">
-              <span class="tag">Mac</span>
-              <span class="tag">Linux</span>
-              <span class="tag">Windows</span>
+            <div class="list platform-tags">
+              <button class="tag tag-button" type="button" data-platform="mac">Mac</button>
+              <button class="tag tag-button" type="button" data-platform="linux">Linux</button>
+              <button class="tag tag-button" type="button" data-platform="windows">Windows</button>
+            </div>
+            <div class="platform-sim" role="status" aria-live="polite">
+              <div class="platform-sim__label">Click a platform to simulate.</div>
+              <pre class="platform-sim__output" data-platform-output>$</pre>
             </div>
           </div>
           <div class="card reveal">
@@ -156,6 +167,192 @@
               <span class="tag">MongoDB</span>
               <span class="tag">Solr</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ubuntu-section" id="ubuntu-sim" aria-hidden="true">
+      <div class="ubuntu-overlay" role="region" aria-label="Ubuntu desktop simulation">
+        <div class="ubuntu-boot" data-ubuntu-boot>
+          <img class="ubuntu-boot__brand" src="../assets/files/ubuntu/boot/logo.svg" alt="Ubuntu logo" />
+          <div class="ubuntu-boot__process" aria-hidden="true">
+            <img class="ubuntu-boot__spinner" src="../assets/files/ubuntu/boot/spinner.svg" alt="" />
+          </div>
+          <img class="ubuntu-boot__wordmark" src="../assets/files/ubuntu/boot/wordmark.svg" alt="Ubuntu" />
+        </div>
+        <div class="ubuntu-desktop" data-ubuntu-desktop>
+          <div class="l-application ubuntu-app">
+            <video class="ubuntu-app__video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+              <source src="../assets/files/ubuntu/wallpapers/nobel_numbat_transparent.mp4" type="video/mp4" />
+            </video>
+            <header class="l-navigation-bar ubuntu-app__bar">
+              <div class="ubuntu-app__activities">Activities</div>
+              <div class="ubuntu-app__clock-wrap">
+                <button class="ubuntu-app__clock" type="button" data-ubuntu-clock-toggle aria-haspopup="true" aria-expanded="false">-- -- --:-- --</button>
+                <div class="ubuntu-calendar" data-ubuntu-calendar aria-hidden="true">
+                  <div class="ubuntu-calendar__head">
+                    <button class="ubuntu-calendar__nav" type="button" aria-label="Previous month" data-ubuntu-calendar-prev>&lsaquo;</button>
+                    <div class="ubuntu-calendar__title" data-ubuntu-calendar-title>Month Year</div>
+                    <button class="ubuntu-calendar__nav" type="button" aria-label="Next month" data-ubuntu-calendar-next>&rsaquo;</button>
+                  </div>
+                  <div class="ubuntu-calendar__week" data-ubuntu-calendar-week></div>
+                  <div class="ubuntu-calendar__days" data-ubuntu-calendar-days></div>
+                </div>
+              </div>
+              <div class="ubuntu-app__status">
+                <div class="p-contextual-menu p-contextual-menu--right ubuntu-menu">
+                  <button
+                    class="p-contextual-menu__toggle ubuntu-power"
+                    type="button"
+                    aria-controls="ubuntu-power-menu"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    data-ubuntu-menu-toggle
+                  >⏻</button>
+                  <div class="p-contextual-menu__dropdown ubuntu-menu__dropdown" id="ubuntu-power-menu" aria-hidden="true">
+                    <a class="p-contextual-menu__link" href="#" data-ubuntu-close>Power Off</a>
+                    <a class="p-contextual-menu__link" href="#" data-ubuntu-restart>Restart</a>
+                  </div>
+                </div>
+              </div>
+            </header>
+            <aside class="l-navigation ubuntu-app__dock-wrap" aria-label="Ubuntu dock">
+              <nav class="ubuntu-dock p-side-navigation p-side-navigation--icons is-dark" aria-label="Dock">
+                <button class="ubuntu-icon" type="button" title="Files" data-app="files" data-label="Files" data-ubuntu-files>
+                  <img class="ubuntu-icon__img" src="../assets/files/ubuntu/icons/files.png" alt="" aria-hidden="true" />
+                  <span class="sr-only">Files</span>
+                </button>
+                <button class="ubuntu-icon" type="button" title="Terminal" data-app="terminal" data-label="Terminal" data-ubuntu-terminal>
+                  <img class="ubuntu-icon__img" src="../assets/files/ubuntu/icons/terminal.png" alt="" aria-hidden="true" />
+                  <span class="sr-only">Terminal</span>
+                </button>
+                <button class="ubuntu-icon" type="button" title="Document Viewer" data-app="viewer" data-label="Viewer" data-ubuntu-viewer>
+                  <img class="ubuntu-icon__img" src="../assets/files/ubuntu/icons/viewer.png" alt="" aria-hidden="true" />
+                  <span class="sr-only">Document Viewer</span>
+                </button>
+                <button class="ubuntu-icon" type="button" title="Chrome" data-app="chrome" data-label="Chrome" data-ubuntu-chrome>
+                  <img class="ubuntu-icon__img ubuntu-icon__img--chrome" src="../assets/files/ubuntu/icons/chrome.png" alt="" aria-hidden="true" />
+                  <span class="sr-only">Chrome</span>
+                </button>
+                <button class="ubuntu-icon" type="button" title="Settings" data-app="settings" data-label="Settings" data-ubuntu-settings>
+                  <img class="ubuntu-icon__img" src="../assets/files/ubuntu/icons/settings.png" alt="" aria-hidden="true" />
+                  <span class="sr-only">Settings</span>
+                </button>
+              </nav>
+            </aside>
+            <main class="l-main ubuntu-app__main">
+              <div class="ubuntu-wall">
+                <div class="ubuntu-window ubuntu-window--files is-hidden" data-files-window>
+                  <div class="ubuntu-window__bar" data-files-drag-handle>
+                    <div class="ubuntu-window__title">Files</div>
+                    <div class="ubuntu-window__controls">
+                      <button class="ubuntu-control ubuntu-control--min" type="button" aria-label="Minimize" data-files-minimize>&mdash;</button>
+                      <button class="ubuntu-control ubuntu-control--max" type="button" aria-label="Maximize" data-files-maximize>▢</button>
+                      <button class="ubuntu-control ubuntu-control--close" type="button" aria-label="Close" data-files-close>&times;</button>
+                    </div>
+                  </div>
+                  <div class="ubuntu-window__body ubuntu-window__body--files">
+                    <div class="ubuntu-files">
+                      <div class="ubuntu-files__toolbar">
+                        <div class="ubuntu-files__nav">
+                          <button class="ubuntu-files__btn" type="button" aria-label="Back" data-files-back>&lsaquo;</button>
+                          <button class="ubuntu-files__btn" type="button" aria-label="Forward" data-files-forward>&rsaquo;</button>
+                          <button class="ubuntu-files__path" type="button" data-files-path>Home</button>
+                        </div>
+                      </div>
+                      <div class="ubuntu-files__main">
+                        <aside class="ubuntu-files__sidebar" aria-label="Places">
+                          <button class="ubuntu-files__side-item is-active" type="button" data-folder="Home">Home</button>
+                          <button class="ubuntu-files__side-item" type="button" data-folder="Desktop">Desktop</button>
+                          <button class="ubuntu-files__side-item" type="button" data-folder="Documents">Documents</button>
+                          <button class="ubuntu-files__side-item" type="button" data-folder="Downloads">Downloads</button>
+                          <button class="ubuntu-files__side-item" type="button" data-folder="Music">Music</button>
+                          <button class="ubuntu-files__side-item" type="button" data-folder="Pictures">Pictures</button>
+                          <button class="ubuntu-files__side-item" type="button" data-folder="Videos">Videos</button>
+                        </aside>
+                        <div class="ubuntu-files__content">
+                          <div class="ubuntu-files__grid" data-files-grid></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ubuntu-window ubuntu-window--pdf is-hidden" data-pdf-window>
+                  <div class="ubuntu-window__bar" data-pdf-drag-handle>
+                    <div class="ubuntu-window__title" data-pdf-title>Document Viewer</div>
+                    <div class="ubuntu-window__controls">
+                      <button class="ubuntu-control ubuntu-control--min" type="button" aria-label="Minimize" data-pdf-minimize>&mdash;</button>
+                      <button class="ubuntu-control ubuntu-control--max" type="button" aria-label="Maximize" data-pdf-maximize>▢</button>
+                      <button class="ubuntu-control ubuntu-control--close" type="button" aria-label="Close" data-pdf-close>&times;</button>
+                    </div>
+                  </div>
+                  <div class="ubuntu-window__body ubuntu-window__body--pdf">
+                    <div class="ubuntu-pdf">
+                      <iframe class="ubuntu-pdf__frame" data-pdf-frame title="Document Viewer"></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="ubuntu-window ubuntu-window--settings is-hidden" data-settings-window>
+                  <div class="ubuntu-window__bar" data-settings-drag-handle>
+                    <div class="ubuntu-window__title">Settings - Background</div>
+                    <div class="ubuntu-window__controls">
+                      <button class="ubuntu-control ubuntu-control--min" type="button" aria-label="Minimize" data-settings-minimize>&mdash;</button>
+                      <button class="ubuntu-control ubuntu-control--max" type="button" aria-label="Maximize" data-settings-maximize>▢</button>
+                      <button class="ubuntu-control ubuntu-control--close" type="button" aria-label="Close" data-settings-close>&times;</button>
+                    </div>
+                  </div>
+                  <div class="ubuntu-window__body ubuntu-window__body--settings">
+                    <div class="ubuntu-settings">
+                      <div class="ubuntu-settings__preview" data-settings-preview></div>
+                      <div class="ubuntu-settings__grid" data-settings-grid></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ubuntu-window ubuntu-window--chrome is-hidden" data-chrome-window>
+                  <div class="ubuntu-window__bar" data-chrome-drag-handle>
+                    <div class="ubuntu-window__title">Chrome</div>
+                    <div class="ubuntu-window__controls">
+                      <button class="ubuntu-control ubuntu-control--min" type="button" aria-label="Minimize" data-chrome-minimize>&mdash;</button>
+                      <button class="ubuntu-control ubuntu-control--max" type="button" aria-label="Maximize" data-chrome-maximize>▢</button>
+                      <button class="ubuntu-control ubuntu-control--close" type="button" aria-label="Close" data-chrome-close>&times;</button>
+                    </div>
+                  </div>
+                  <div class="ubuntu-window__body ubuntu-window__body--chrome">
+                    <div class="ubuntu-browser">
+                      <div class="ubuntu-browser__toolbar">
+                        <button class="ubuntu-browser__button" type="button" data-chrome-refresh aria-label="Refresh">↻</button>
+                        <button class="ubuntu-browser__button" type="button" data-chrome-home aria-label="Home">⌂</button>
+                        <input class="ubuntu-browser__input" type="text" data-chrome-url autocomplete="off" spellcheck="false" />
+                      </div>
+                      <iframe class="ubuntu-browser__frame" data-chrome-frame title="Chrome Window"></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="ubuntu-window is-hidden" data-ubuntu-window>
+                  <div class="ubuntu-window__bar" data-terminal-drag-handle>
+                    <div class="ubuntu-window__title">Terminal - jisan@ubuntu</div>
+                    <div class="ubuntu-window__controls">
+                      <button class="ubuntu-control ubuntu-control--min" type="button" aria-label="Minimize" data-terminal-minimize>&mdash;</button>
+                      <button class="ubuntu-control ubuntu-control--max" type="button" aria-label="Maximize" data-terminal-maximize>▢</button>
+                      <button class="ubuntu-control ubuntu-control--close" type="button" aria-label="Close" data-terminal-close>&times;</button>
+                    </div>
+                  </div>
+                  <div class="ubuntu-window__body">
+                    <div class="ubuntu-terminal" data-terminal>
+                      <div class="ubuntu-terminal__history" data-terminal-history></div>
+                      <div class="ubuntu-terminal__row">
+                        <span class="ubuntu-terminal__user">jisan@ubuntu</span>
+                        <span>:</span>
+                        <span class="ubuntu-terminal__path">~<span data-terminal-dir></span></span>
+                        <span>$</span>
+                        <input class="ubuntu-terminal__input" type="text" data-terminal-input spellcheck="false" autocomplete="off" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </main>
           </div>
         </div>
       </div>
@@ -179,5 +376,11 @@
   </main>
 
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/ubuntu/terminal.js"></script>
+  <script src="../assets/js/ubuntu/chrome.js"></script>
+  <script src="../assets/js/ubuntu/pdf-viewer.js"></script>
+  <script src="../assets/js/ubuntu/files.js"></script>
+  <script src="../assets/js/ubuntu/settings.js"></script>
+  <script src="../assets/js/ubuntu/index.js"></script>
 </body>
 </html>

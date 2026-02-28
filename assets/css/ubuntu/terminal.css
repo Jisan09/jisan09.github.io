@@ -1,0 +1,44 @@
+.ubuntu-terminal {
+  min-height: 320px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.ubuntu-terminal__history {
+  display: grid;
+  gap: 6px;
+  white-space: pre-wrap;
+}
+
+.ubuntu-terminal__row,
+.ubuntu-terminal__line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.ubuntu-terminal__user {
+  color: #74e68f;
+  font-weight: 600;
+}
+
+.ubuntu-terminal__path {
+  color: #78a9ff;
+}
+
+.ubuntu-terminal__input {
+  flex: 1;
+  min-width: 180px;
+  border: 0;
+  outline: 0;
+  color: #f5f4f7;
+  background: transparent;
+  font: inherit;
+}
+
+.ubuntu-terminal__output {
+  color: #d6d8dc;
+  padding-left: 2px;
+}

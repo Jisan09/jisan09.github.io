@@ -1,0 +1,483 @@
+body.ubuntu-open {
+  overflow: hidden;
+}
+
+.ubuntu-app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  grid-template-rows: 36px 1fr;
+  grid-template-areas:
+    "bar bar"
+    "dock main";
+}
+
+.ubuntu-app__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.ubuntu-app__bar {
+  grid-area: bar;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(5px);
+  color: #f5f4f7;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ubuntu-app__activities {
+  font-weight: 600;
+}
+
+.ubuntu-app__clock {
+  text-align: center;
+  font-weight: 600;
+  background: transparent;
+  border: 0;
+  color: #f5f4f7;
+  padding: 3px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ubuntu-app__clock:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ubuntu-app__clock-wrap {
+  position: relative;
+  justify-self: center;
+}
+
+.ubuntu-calendar {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 10, 14, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  display: none;
+  z-index: 6;
+}
+
+.ubuntu-calendar.is-open {
+  display: block;
+}
+
+.ubuntu-calendar__head {
+  display: grid;
+  grid-template-columns: 28px 1fr 28px;
+  align-items: center;
+  gap: 6px;
+}
+
+.ubuntu-calendar__title {
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.ubuntu-calendar__nav {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5f4f7;
+  cursor: pointer;
+}
+
+.ubuntu-calendar__nav:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ubuntu-calendar__week,
+.ubuntu-calendar__days {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.ubuntu-calendar__weekday,
+.ubuntu-calendar__day {
+  text-align: center;
+  font-size: 0.72rem;
+  padding: 6px 0;
+}
+
+.ubuntu-calendar__weekday {
+  color: rgba(245, 244, 247, 0.72);
+}
+
+.ubuntu-calendar__day {
+  border-radius: 7px;
+}
+
+.ubuntu-calendar__day.is-outside {
+  color: rgba(245, 244, 247, 0.35);
+}
+
+.ubuntu-calendar__day.is-today {
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+}
+
+.ubuntu-app__status {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  justify-content: flex-end;
+}
+
+.ubuntu-app__dock-wrap {
+  grid-area: dock;
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 12px 8px;
+}
+
+.ubuntu-app__main {
+  grid-area: main;
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.ubuntu-power {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(18, 18, 26, 0.75);
+  color: #f5f4f7;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ubuntu-power:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.ubuntu-menu {
+  position: relative;
+}
+
+.ubuntu-menu__dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 150px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(20, 20, 28, 0.94);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: none;
+}
+
+.ubuntu-menu__dropdown.is-open {
+  display: block;
+}
+
+.ubuntu-menu__dropdown .p-contextual-menu__link {
+  display: block;
+  padding: 10px 12px;
+  color: #f5f4f7;
+  font-size: 0.78rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ubuntu-menu__dropdown .p-contextual-menu__link:first-child {
+  border-top: 0;
+}
+
+.ubuntu-menu__dropdown .p-contextual-menu__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ubuntu-wall {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  padding: 18px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.ubuntu-dock {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  border-radius: 18px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  z-index: 2;
+}
+
+.ubuntu-icon {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  border: 0;
+  background: transparent;
+  color: #f5f4f7;
+  font-weight: 600;
+  font-size: 0.72rem;
+  cursor: pointer;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.ubuntu-icon.is-running::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.ubuntu-icon::after {
+  content: attr(data-label);
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: rgba(10, 10, 14, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f5f4f7;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.ubuntu-icon:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ubuntu-icon:hover::after,
+.ubuntu-icon:focus-visible::after {
+  opacity: 1;
+}
+
+.ubuntu-icon__img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ubuntu-window {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  width: min(760px, 86%);
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.56)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 32px 70px rgba(0, 0, 0, 0.5),
+    0 2px 0 rgba(255, 255, 255, 0.12) inset;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  --ubuntu-x: -50%;
+  transform: translateX(var(--ubuntu-x, 0));
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+}
+
+.ubuntu-window.is-dragging {
+  transition: none;
+}
+
+.ubuntu-window.is-maximized {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  --ubuntu-x: 0;
+}
+
+.ubuntu-window.is-hidden {
+  opacity: 0;
+  transform: translateX(var(--ubuntu-x, 0)) scale(0.98);
+  pointer-events: none;
+}
+
+.ubuntu-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.29),
+    rgba(0, 0, 0, 0.27)
+  );
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f5f4f7;
+  font-size: 0.78rem;
+  user-select: none;
+}
+
+.ubuntu-window__controls {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.ubuntu-control {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5f4f7;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.ubuntu-control:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.ubuntu-control--min {
+  font-size: 0.82rem;
+}
+
+.ubuntu-control--max {
+  font-size: 0.64rem;
+}
+
+.ubuntu-control--close {
+  font-size: 1rem;
+}
+
+.ubuntu-window__title {
+  opacity: 0.94;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+.ubuntu-window__body {
+  flex: 1;
+  min-height: 0;
+  padding: 16px 18px 20px;
+  color: #f5f4f7;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.49),
+    rgba(0, 0, 0, 0.57)
+  );
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .ubuntu-app {
+    grid-template-columns: 1fr;
+    grid-template-rows: 36px 1fr 68px;
+    grid-template-areas:
+      "bar"
+      "main"
+      "dock";
+  }
+
+  .ubuntu-app__dock-wrap {
+    border-right: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 8px;
+  }
+
+  .ubuntu-window {
+    left: 50%;
+    --ubuntu-x: -50%;
+    width: min(520px, 92%);
+  }
+
+  .ubuntu-dock {
+    grid-auto-flow: column;
+    grid-auto-columns: min-content;
+    justify-content: center;
+  }
+
+  .ubuntu-icon::after {
+    left: 50%;
+    top: auto;
+    bottom: calc(100% + 8px);
+    transform: translateX(-50%);
+  }
+}

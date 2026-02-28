@@ -1,0 +1,214 @@
+.ubuntu-window--files {
+  top: 96px;
+  left: 51%;
+  width: min(820px, 88%);
+}
+
+.ubuntu-window__body--files {
+  padding: 0;
+  display: flex;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+  font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+}
+
+.ubuntu-files {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 52px 1fr;
+  background: rgba(16, 17, 21, 0.42);
+  color: #d9dde6;
+}
+
+.ubuntu-files__toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 11, 15, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+.ubuntu-files__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ubuntu-files__btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: #d6d9e0;
+  cursor: pointer;
+}
+
+.ubuntu-files__btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.ubuntu-files__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ubuntu-files__path {
+  min-width: 220px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: #eceff6;
+  padding: 0 12px;
+  text-align: left;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.ubuntu-files__main {
+  display: grid;
+  grid-template-columns: 188px 1fr;
+  min-height: 0;
+}
+
+.ubuntu-files__sidebar {
+  background: rgba(17, 18, 23, 0.32);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 0;
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  backdrop-filter: blur(5px);
+}
+
+.ubuntu-files__side-item {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  color: #bcc2cf;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ubuntu-files__side-item.is-active {
+  background: rgba(255, 255, 255, 0.13);
+  color: #f1f3f8;
+}
+
+.ubuntu-files__side-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.ubuntu-files__content {
+  background: rgba(32, 34, 42, 0.26);
+  overflow: auto;
+}
+
+.ubuntu-files__grid {
+  padding: 14px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px 12px;
+}
+
+.ubuntu-files__item {
+  width: 100%;
+  min-height: 88px;
+  border-radius: 8px;
+  color: #d3d8e4;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.ubuntu-files__item span:last-child {
+  font-size: 0.84rem;
+}
+
+.ubuntu-files__folder {
+  width: 50px;
+  height: 36px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #a44f74, #ec7e3b);
+  position: relative;
+}
+
+.ubuntu-files__folder::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  top: 10px;
+  border-radius: 6px;
+  background: #8d8f95;
+}
+
+.ubuntu-files__folder-img {
+  width: 56px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.ubuntu-files__file {
+  width: 34px;
+  height: 42px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #efefef, #cfd2d9);
+  position: relative;
+}
+
+.ubuntu-files__file::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-left: 10px solid transparent;
+  border-top: 10px solid rgba(120, 126, 137, 0.45);
+}
+
+.ubuntu-files__item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.ubuntu-files__item.is-selected {
+  background: rgba(121, 167, 255, 0.22);
+  box-shadow: 0 0 0 1px rgba(142, 181, 255, 0.6) inset;
+}
+
+@media (max-width: 900px) {
+  .ubuntu-window--files {
+    width: min(760px, 96%);
+  }
+
+  .ubuntu-files__main {
+    grid-template-columns: 1fr;
+  }
+
+  .ubuntu-files__sidebar {
+    display: none;
+  }
+
+  .ubuntu-files__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

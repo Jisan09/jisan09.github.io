@@ -1,0 +1,111 @@
+.ubuntu-window--settings {
+  top: 88px;
+  left: 54%;
+  width: min(860px, 88%);
+}
+
+.ubuntu-window__body--settings {
+  padding: 0;
+  font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+}
+
+.ubuntu-settings {
+  display: grid;
+  grid-template-rows: 210px 1fr;
+  min-height: 500px;
+  height: 100%;
+}
+
+.ubuntu-settings__preview {
+  margin: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.3);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ubuntu-settings__preview-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ubuntu-settings__preview::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f5f4f7;
+  font-size: 0.75rem;
+}
+
+.ubuntu-settings__grid {
+  padding: 0 14px 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  overflow: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ubuntu-settings__item {
+  position: relative;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  min-height: 84px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #f5f4f7;
+  font-size: 0.72rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  display: grid;
+  align-items: end;
+  justify-items: start;
+  padding: 8px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.ubuntu-settings__item.is-active {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.ubuntu-settings__tile-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ubuntu-settings__item-label {
+  position: relative;
+  z-index: 1;
+  line-height: 1.15;
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 900px) {
+  .ubuntu-window--settings {
+    width: min(760px, 96%);
+  }
+
+  .ubuntu-settings {
+    grid-template-rows: 160px 1fr;
+    min-height: 420px;
+  }
+}
