@@ -184,6 +184,17 @@ body.ubuntu-open {
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
+.ubuntu-power__icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
 .ubuntu-power:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);

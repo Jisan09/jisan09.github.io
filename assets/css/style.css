@@ -577,6 +577,23 @@ footer {
 }
 
 @media (max-width: 640px) {
-  .nav-links { display: none; }
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px 12px;
+  }
+  .nav-links {
+    display: flex;
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px;
+    padding-bottom: 2px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
   .hero { padding-top: 70px; }
 }
